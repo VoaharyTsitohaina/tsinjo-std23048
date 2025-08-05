@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Tsinjo</h1>
+
+<form th:action="@{/donate}" method="post">
+    Email: <input type="email" name="email" required><br>
+    Nom complet: <input type="text" name="name" required><br>
+    Référence paiement: <input type="text" name="pspPaymentId" required><br>
+    <button type="submit">Donner</button>
+</form>
+
+<h2>Historique des Dons</h2>
+<ul>
+    <li th:each="d : ${donations}">
+        <span th:text="${d.donor.fullName}"></span> -
+        <span th:text="${d.payment.amount}"></span> -
+        <span th:text="${d.payment.status}"></span>
+    </li>
+</ul>
+
+<h2>Historique des Aides</h2>
+<ul>
+    <li th:each="h : ${helps}">
+        <span th:text="${h.beneficiary.fullName}"></span> -
+        <span th:text="${h.payment.amount}"></span> -
+        <span th:text="${h.accidentDescription}"></span>
+    </li>
+</ul>
+</body>
+</html>
